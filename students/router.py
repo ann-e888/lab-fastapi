@@ -5,9 +5,9 @@ from students.storage import *
 
 router = APIRouter()
 
-@router.get("/")
-async def root():
-    return []
+# @router.get("/")
+# async def root():
+#     return []
 
 student_list = get_students_data()
 
@@ -57,7 +57,7 @@ async def addmark(id: int, mark : Mark):
 
 @router.get("/{student_id}/marks")
 async def getmark(student_id:int):
-    if id < len(marks):
+    if student_id in marks:
         return marks[student_id]
     raise HTTPException(status_code=404, detail="Student not found")
 
